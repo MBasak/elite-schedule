@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Elite Schedule</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="success">
+    
+    <ion-title>MyTeams</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+  <ion-card *ngIf="!favorites">
+    <ion-card-header>
+      No followed teams
+    </ion-card-header>
+    <ion-card-content>
+<p>You do not have any teams selected</p>
+  <p> Find a tournament to select a team</p>
+  <ion-button full (click)="goToTournament()">Find a tournament</ion-button>
+    </ion-card-content> 
+  </ion-card>
+  
+  <ion-card *ngIf="favorites">
+     
+      <ion-list>
+        <ion-list-header>Followed teams</ion-list-header>
+        <ion-item class="ion-item-stack" color="light" *ngFor="let item of favorites" (click)="itemTapped(item)">
+          <ion-icon name="star"></ion-icon>
+          {{item.team.name}}
+          
+          <p>{{item.tournamentName}}</p>
+        </ion-item>
+        </ion-list>
+     
+        <ion-card-content>  
+    <ion-button full (click)="goToTournament()">Find a tournament</ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

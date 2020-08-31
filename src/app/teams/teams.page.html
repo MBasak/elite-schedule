@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Teams</ion-title>
+   
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar placeholder="Search teams"  (ionInput)="updateTeams($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+    <ion-list>
+      <ion-item-group  *ngFor="let division of filteredTeams">
+      <ion-item-divider color="secondary">
+        {{division.division}}
+        </ion-item-divider>
+
+      <ion-item  *ngFor="let team of division.divisionTeams" (click)="itemTapped(team.id)">
+        {{team.name}}
+      </ion-item>
+     
+      
+</ion-item-group>
+
+    </ion-list>
+ 
+ 
+
+</ion-content>
